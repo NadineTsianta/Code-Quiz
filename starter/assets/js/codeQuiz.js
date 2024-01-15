@@ -25,7 +25,7 @@ function resetScreen() {
     choices.innerHTML = '';
 
     for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        var choiceElement = document.createElement('div');
+        var choiceElement = document.createElement('option');
         choiceElement.textContent = questions[currentQuestionIndex].answers[i].text;
 
         choices.appendChild(choiceElement);
@@ -36,7 +36,21 @@ function resetScreen() {
 
 
 // When answer is clicked, the next question appears
+choices.addEventListener ("click", function(event) {
 
+    var userOption = event.target.textContent;
+    var isCorrect = checkAnswer(userOption);
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length){
+        resetScreen();
+    } else {
+        endScreen.innerHTML = "End of Quiz"
+    }
+
+
+})
 
 
 // If the answer clicked was incorrect then subtract time from the clock

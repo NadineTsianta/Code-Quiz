@@ -3,41 +3,41 @@ var startBtnEl = document.querySelector('#start');
 var submitBtnEl = document.querySelector('#submit');
 var timerEl = document.querySelector('.timer');
 var quizArea = document.querySelector("#start-screen");
-var divEl = document.querySelector("#questions");
+var questionDivEl = document.querySelector("#questions");
 var questionTitle = document.querySelector("#question-title");
 var choices = document.querySelector("#choices");
-var questionInOrder = document.querySelector("#questions");
 var endScreen = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
 
 
 // A start button that when clicked a timer starts and the first question appears.
-function quizPage (){
+function quizPage() {
     resetScreen()
-    document.getElementById("questions").style.display = "block";   
-    
-}
-let currentQuestion =0;
+    questionDivEl.style.display = "block";
+};
 
-function resetScreen(){
-    quizArea.style.display ="none";
-    questionTitle.textContent = questions[0].question;
-  
+let currentQuestionIndex = 0;
+
+function resetScreen() {
+    quizArea.style.display = "none";
+    questionTitle.textContent = questions[currentQuestionIndex].question;
+
     choices.innerHTML = '';
 
     for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
         var choiceElement = document.createElement('div');
-        choiceElement.textContent = questions.answers[i].text;
+        choiceElement.textContent = questions[currentQuestionIndex].answers[i].text;
 
         choices.appendChild(choiceElement);
-        
+
     }
 
-}
-
+};
 
 
 // When answer is clicked, the next question appears
+
+
 
 // If the answer clicked was incorrect then subtract time from the clock
 
@@ -48,4 +48,4 @@ startBtnEl.addEventListener("click", quizPage);
 
 // When the game ends, it should display their score and give the user the ability to save their initials and their score
 //  Capture user Initials -> Submit button
-submitBtnEl.addEventListener("click", finalScore )
+submitBtnEl.addEventListener("click", finalScore)

@@ -10,22 +10,28 @@ var questionInOrder = document.querySelector("#questions");
 var endScreen = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
 
-var firstChoicebtn
-var secondChoicebtn
 
 // A start button that when clicked a timer starts and the first question appears.
 function quizPage (){
     resetScreen()
     document.getElementById("questions").style.display = "block";   
-
-
+    
 }
+let currentQuestion =0;
 
 function resetScreen(){
     quizArea.style.display ="none";
     questionTitle.textContent = questions[0].question;
-    choices.textContent = questions[0].answers[0].text;
-    choices.textContent = questions[0].answers[1].text
+  
+    choices.innerHTML = '';
+
+    for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
+        var choiceElement = document.createElement('div');
+        choiceElement.textContent = questions.answers[i].text;
+
+        choices.appendChild(choiceElement);
+        
+    }
 
 }
 

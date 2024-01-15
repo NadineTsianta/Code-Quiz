@@ -25,8 +25,9 @@ function resetScreen() {
     choices.innerHTML = '';
 
     for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        var choiceElement = document.createElement('option');
+        var choiceElement = document.createElement('button');
         choiceElement.textContent = questions[currentQuestionIndex].answers[i].text;
+        choiceElement.setAttribute('class', 'choice-btn')
 
         choices.appendChild(choiceElement);
 
@@ -36,22 +37,42 @@ function resetScreen() {
 
 
 // When answer is clicked, the next question appears
-choices.addEventListener ("click", function(event) {
+
+
+choices.addEventListener("click", function (event) {
+
 
     var userOption = event.target.textContent;
     var isCorrect = checkAnswer(userOption);
 
-    currentQuestionIndex++;
+    if (isCorrect) {
+        currentQuestionIndex++;
 
-    if (currentQuestionIndex < questions.length){
-        resetScreen();
-    } else {
-        endScreen.innerHTML = "End of Quiz"
+        if (currentQuestionIndex < questions.length) {
+            resetScreen();
+        } else {
+            endScreen.innerHTML = "End of Quiz"
+        };
+
     }
 
 
-})
 
+
+});
+
+
+function checkAnswer(userOption) {
+
+    let correctAnswer = questions[currentQuestionIndex].answers.find(answer => answer.correct).text;
+    
+
+    if (userOption === correctAnswer) {
+       return "This is the correct answer!"
+    } else {
+       return "This answer is wrong!"
+    }
+};
 
 // If the answer clicked was incorrect then subtract time from the clock
 

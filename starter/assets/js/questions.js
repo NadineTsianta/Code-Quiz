@@ -21,4 +21,5 @@ const questions = [
             {text:"<script src='xxx.js'", correct: true}
         ]
     }
-]
+];
+

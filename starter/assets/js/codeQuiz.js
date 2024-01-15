@@ -56,21 +56,18 @@ choices.addEventListener("click", function (event) {
 
     }
 
-
-
-
 });
 
 
 function checkAnswer(userOption) {
 
     let correctAnswer = questions[currentQuestionIndex].answers.find(answer => answer.correct).text;
-    
+
 
     if (userOption === correctAnswer) {
-       return "This is the correct answer!"
+        return "This is the correct answer!"
     } else {
-       return "This answer is wrong!"
+        return "This answer is wrong!"
     }
 };
 

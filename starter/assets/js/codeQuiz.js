@@ -12,7 +12,9 @@ var finalScore = document.querySelector("#final-score");
 
 
 // A start button that when clicked a timer starts and the first question appears.
-
+function quizPage (){
+    document.getElementById("questions").style.display = "block";
+}
 
 
 // When answer is clicked, the next question appears

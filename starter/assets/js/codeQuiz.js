@@ -48,7 +48,6 @@ updateScore();
 
 choices.addEventListener("click", function (event) {
 
-
     let userOption = event.target.textContent;
 
     updateScore(userOption);
@@ -65,7 +64,7 @@ choices.addEventListener("click", function (event) {
         quizEnd();
     };
 
-    event.stopPropagation()
+ event.stopPropagation();
 });
 
 
@@ -101,6 +100,7 @@ function finalScore(event) {
     event.preventDefault();
     let userInitials = userHighscoreInput.value.trim();
     localStorage.setItem('userInitials', userInitials);
+    localStorage.setItem('userScore', score);
 
 
     let userScoreObject = {
@@ -117,20 +117,27 @@ function finalScore(event) {
 
 function displayHighScores() {
     let storedUserInitials = localStorage.getItem('userInitials');
-    highScoresList.innerHTML = '';
-    
-    for (let i = 0; i < highScores.length; i++) {
-        let scoreEntry = document.createElement('li');
-        scoreEntry.textContent = highScores[i].initials + ' :' + highScores[i].score;
-        highScoresList.appendChild(scoreEntry);
-    };
+    let storedUserScore = localStorage.getItem('userScore');
+
     let highScoresList = document.getElementById('highscores');
+    
+    highScoresList.innerHTML = '';
+
+    if (storedUserInitials && storedUserScore) {
+
+        let scoreEntry = document.createElement('li');
+        scoreEntry.textContent = `${storedUserInitials}: ${storedUserScore}`; //placeholder for user input and score and to make it display like "nad:3"
+        highScoresList.appendChild(scoreEntry);
+    }
+    
+    
     
     userHighscoreInput.textContent = storedUserInitials;
 };
 
 function resetQuiz() {
     currentQuestionIndex = 0
+    score = 0;
 
 }
 

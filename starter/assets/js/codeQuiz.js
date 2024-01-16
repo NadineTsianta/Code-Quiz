@@ -80,6 +80,7 @@ function checkAnswer(userOption) {
 };
 
 function quizEnd(){
+    questionDivEl.style.display = "none";
     finalSc === userScore;
     endScreen.style.display = "block";
     

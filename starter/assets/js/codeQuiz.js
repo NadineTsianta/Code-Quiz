@@ -7,7 +7,7 @@ var questionDivEl = document.querySelector("#questions");
 var questionTitle = document.querySelector("#question-title");
 var choices = document.querySelector("#choices");
 var endScreen = document.querySelector("#end-screen");
-var finalScore = document.querySelector("#final-score");
+var finalSc = document.querySelector("#final-score");
 var userScore = document.querySelector("#js-userScore");
 var highScoresScreen = document.querySelector(".wrapper")
 
@@ -80,7 +80,15 @@ function checkAnswer(userOption) {
 };
 
 function quizEnd(){
-    window.location.href = '../starter/highscores.html'
+    finalSc === userScore;
+    endScreen.style.display = "block";
+    
+    submitBtnEl.addEventListener('click', function (){
+        
+        window.location.href = '../starter/highscores.html'
+    })
+    
+
 }
 
 

@@ -14,7 +14,6 @@ var userScore = document.querySelector("#js-userScore");
 
 
 
-
 // A start button that when clicked a timer starts and the first question appears.
 function quizPage() {
     resetScreen()
@@ -28,16 +27,16 @@ function resetScreen() {
     questionTitle.textContent = questions[currentQuestionIndex].question;
 
     choices.innerHTML = '';
-
+    
     for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
         var choiceElement = document.createElement('button');
         choiceElement.textContent = questions[currentQuestionIndex].answers[i].text;
         choiceElement.setAttribute('class', 'choice-btn')
-
+        
         choices.appendChild(choiceElement);
-
+        
     }
-
+    
 };
 
 updateScore();
@@ -45,29 +44,30 @@ updateScore();
 
 
 choices.addEventListener("click", function (event) {
-
-
+    
+    
     var userOption = event.target.textContent;
     var isCorrect = checkAnswer(userOption);
-
+    
     if (isCorrect) {
         currentQuestionIndex++;
-
+        
         if (currentQuestionIndex < questions.length) {
             resetScreen();
         } else {
             displayEndScreen() //create end screen
         };
-
+        
     }
-
-
-    updateScore();
+    
+    
+    updateScore(userOption);
     
     displayCurrentScore();
     
-
+    
 });
+
 
 function displayCurrentScore() {
     userScore.textContent = `Your score: ${score}`;

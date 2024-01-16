@@ -8,6 +8,11 @@ var questionTitle = document.querySelector("#question-title");
 var choices = document.querySelector("#choices");
 var endScreen = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
+var userScore = document.querySelector("#js-userScore");
+
+
+
+
 
 
 // A start button that when clicked a timer starts and the first question appears.
@@ -35,7 +40,7 @@ function resetScreen() {
 
 };
 
-
+updateScore();
 // When answer is clicked, the next question appears
 
 
@@ -51,25 +56,55 @@ choices.addEventListener("click", function (event) {
         if (currentQuestionIndex < questions.length) {
             resetScreen();
         } else {
-            endScreen.innerHTML = "End of Quiz"
+            displayEndScreen() //create end screen
         };
 
     }
 
+
+    updateScore();
+    
+    displayCurrentScore();
+    
+
 });
+
+function displayCurrentScore() {
+    userScore.textContent = `Your score: ${score}`;
+}
 
 
 function checkAnswer(userOption) {
 
     let correctAnswer = questions[currentQuestionIndex].answers.find(answer => answer.correct).text;
+    return userOption === correctAnswer;
 
-
-    if (userOption === correctAnswer) {
-        return "This is the correct answer!"
-    } else {
-        return "This answer is wrong!"
-    }
 };
+
+let highScores =[];
+
+function finalScore() {
+    var userInitials = userHighscoreInput.value;
+    var userScoreObject = {
+        initials: userInitials,
+        score: score
+    };
+
+    highScores.push(userScoreObject);
+
+    displayHighScores();
+
+    resetQuiz();
+}
+
+function displayHighScores(){
+    console.log(highScores);
+}
+
+function resetQuiz(){
+    currentQuestionIndex = 0
+
+}
 
 // If the answer clicked was incorrect then subtract time from the clock
 

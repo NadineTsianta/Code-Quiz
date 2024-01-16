@@ -96,7 +96,7 @@ function quizEnd() {
 let highScores = [];
 
 function finalScore() {
-    var userInitials = userHighscoreInput.ariaValueMax;
+    var userInitials = userHighscoreInput.value.trim();
     localStorage.setItem('userInitials', userInitials);
     userInitials = localStorage.getItem('userInitials');
     userHighscoreInput.textContent = userInitials;

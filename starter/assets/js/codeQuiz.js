@@ -110,8 +110,8 @@ function displayHighScores() {
         let scoreEntry = document.createElement('li');
         scoreEntry.textContent = highScores[i].initials + ' :' + highScores[i].score;
         highScoresList.appendChild(scoreEntry);
-        
-    }
+    };
+    finalScore();
 }
 
 function resetQuiz() {

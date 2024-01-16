@@ -1,15 +1,15 @@
-var userHighscoreInput = document.querySelector('#initials');
-var startBtnEl = document.querySelector('#start');
-var submitBtnEl = document.querySelector('#submit');
-var timerEl = document.querySelector('.timer');
-var quizArea = document.querySelector("#start-screen");
-var questionDivEl = document.querySelector("#questions");
-var questionTitle = document.querySelector("#question-title");
-var choices = document.querySelector("#choices");
-var endScreen = document.querySelector("#end-screen");
-var finalSc = document.querySelector("#final-score");
-var userScore = document.querySelector("#js-userScore");
-var highScoresScreen = document.querySelector(".wrapper")
+let userHighscoreInput = document.querySelector('#initials');
+let startBtnEl = document.querySelector('#start');
+let submitBtnEl = document.querySelector('#submit');
+let timerEl = document.querySelector('.timer');
+let quizArea = document.querySelector("#start-screen");
+let questionDivEl = document.querySelector("#questions");
+let questionTitle = document.querySelector("#question-title");
+let choices = document.querySelector("#choices");
+let endScreen = document.querySelector("#end-screen");
+let finalSc = document.querySelector("#final-score");
+let userScore = document.querySelector("#js-userScore");
+let highScoresScreen = document.querySelector(".wrapper")
 
 
 
@@ -30,7 +30,7 @@ function resetScreen() {
     choices.innerHTML = '';
 
     for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        var choiceElement = document.createElement('button');
+        let choiceElement = document.createElement('button');
         choiceElement.textContent = questions[currentQuestionIndex].answers[i].text;
         choiceElement.setAttribute('class', 'choice-btn')
 
@@ -47,7 +47,7 @@ updateScore();
 choices.addEventListener("click", function (event) {
 
 
-    var userOption = event.target.textContent;
+    let userOption = event.target.textContent;
 
     updateScore(userOption);
     displayCurrentScore();
@@ -96,11 +96,11 @@ function quizEnd() {
 let highScores = [];
 
 function finalScore() {
-    var userInitials = userHighscoreInput.value.trim();
+    let userInitials = userHighscoreInput.value.trim();
     localStorage.setItem('userInitials', userInitials);
-    userInitials = localStorage.getItem('userInitials');
-    userHighscoreInput.textContent = userInitials;
-    var userScoreObject = {
+
+
+    let userScoreObject = {
         initials: userInitials,
         score: score
     };
@@ -113,6 +113,9 @@ function finalScore() {
 };
 
 function displayHighScores() {
+    let storedUserInitials = localStorage.getItem('userInitials');
+    userHighscoreInput.textContent = storedUserInitials;
+    
     let highScoresList = document.getElementById('highscores');
 
     highScoresList.innerHTML = '';

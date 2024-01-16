@@ -14,7 +14,6 @@ let highScoresScreen = document.querySelector(".wrapper")
 
 
 
-
 // A start button that when clicked a timer starts and the first question appears.
 function quizPage() {
     resetScreen()
@@ -87,7 +86,7 @@ function quizEnd() {
 
     submitBtnEl.addEventListener('click', function () {
 
-        window.location.href = '../starter/highscores.html'
+        window.location.href = './highscores.html'
     });
 
 

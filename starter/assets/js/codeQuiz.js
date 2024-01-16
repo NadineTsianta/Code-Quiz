@@ -58,8 +58,9 @@ choices.addEventListener("click", function (event) {
 
     if (currentQuestionIndex < questions.length) {
         resetScreen();
-    } else {
-        displayEndScreen() //create end screen
+    }
+     else {
+       quizEnd();
     };
 
     event.stopPropagation()
@@ -78,6 +79,12 @@ function checkAnswer(userOption) {
 
 };
 
+function quizEnd(){
+    window.location.href = '../starter/highscores.html'
+}
+
+
+
 let highScores = [];
 
 function finalScore() {
@@ -95,7 +102,16 @@ function finalScore() {
 }
 
 function displayHighScores() {
-    console.log(highScores);
+    let highScoresList = document.getElementById('highscores');
+
+    highScoresList.innerHTML ='';
+
+    for (let i = 0; i < highScores.length; i++) {
+        let scoreEntry = document.createElement('li');
+        scoreEntry.textContent = highScores[i].initials + ' :' + highScores[i].score;
+        highScoresList.appendChild(scoreEntry);
+        
+    }
 }
 
 function resetQuiz() {

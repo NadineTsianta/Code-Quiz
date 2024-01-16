@@ -12,6 +12,6 @@ function updateScore(userOption) {
 
     // Ensure the score doesn't go below zero
     score = Math.max(score, 0);
-console.log(score);
+    
 };
 

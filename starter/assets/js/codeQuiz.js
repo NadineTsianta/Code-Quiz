@@ -19,7 +19,9 @@ let highScoresScreen = document.querySelector(".wrapper")
 function quizPage() {
     resetScreen()
     questionDivEl.style.display = "block";
+
 };
+
 
 let currentQuestionIndex = 0;
 
@@ -95,7 +97,8 @@ function quizEnd() {
 
 let highScores = [];
 
-function finalScore() {
+function finalScore(event) {
+    event.preventDefault();
     let userInitials = userHighscoreInput.value.trim();
     localStorage.setItem('userInitials', userInitials);
 
@@ -114,19 +117,17 @@ function finalScore() {
 
 function displayHighScores() {
     let storedUserInitials = localStorage.getItem('userInitials');
-    userHighscoreInput.textContent = storedUserInitials;
-
-    let highScoresList = document.getElementById('highscores');
-
     highScoresList.innerHTML = '';
-
+    
     for (let i = 0; i < highScores.length; i++) {
         let scoreEntry = document.createElement('li');
         scoreEntry.textContent = highScores[i].initials + ' :' + highScores[i].score;
         highScoresList.appendChild(scoreEntry);
     };
+    let highScoresList = document.getElementById('highscores');
     
-}
+    userHighscoreInput.textContent = storedUserInitials;
+};
 
 function resetQuiz() {
     currentQuestionIndex = 0

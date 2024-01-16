@@ -1,7 +1,7 @@
 # CODE-QUIZ
 
-
-See site 
+ianta.gi
+See site [here](https://nadinetsthub.io/Code-Quiz/)
 
 ## Overview
 
@@ -11,5 +11,5 @@ At the end of the test the user will see their final score and they will have th
 
 
 
-![Code-Quiz_Q1](../assets/Code-Quiz-question1.png)
-![Code-Quiz_end-screen](../assets/Code-Quiz-end-screen.png)
+![Code-Quiz_Q1](./assets/Code-Quiz-question1.png)
+![Code-Quiz_end-screen](./assets/Code-Quiz-end-screen.png)

@@ -9,6 +9,7 @@ var choices = document.querySelector("#choices");
 var endScreen = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
 var userScore = document.querySelector("#js-userScore");
+var highScoresScreen = document.querySelector(".wrapper")
 
 
 
@@ -27,16 +28,16 @@ function resetScreen() {
     questionTitle.textContent = questions[currentQuestionIndex].question;
 
     choices.innerHTML = '';
-    
+
     for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
         var choiceElement = document.createElement('button');
         choiceElement.textContent = questions[currentQuestionIndex].answers[i].text;
         choiceElement.setAttribute('class', 'choice-btn')
-        
+
         choices.appendChild(choiceElement);
-        
+
     }
-    
+
 };
 
 updateScore();
@@ -44,28 +45,24 @@ updateScore();
 
 
 choices.addEventListener("click", function (event) {
-    
-    
+
+
     var userOption = event.target.textContent;
-    var isCorrect = checkAnswer(userOption);
-    
-    if (isCorrect) {
-        currentQuestionIndex++;
-        
-        if (currentQuestionIndex < questions.length) {
-            resetScreen();
-        } else {
-            displayEndScreen() //create end screen
-        };
-        
-    }
-    
-    
+
     updateScore(userOption);
-    
     displayCurrentScore();
-    
-    
+
+    currentQuestionIndex++;
+
+
+
+    if (currentQuestionIndex < questions.length) {
+        resetScreen();
+    } else {
+        displayEndScreen() //create end screen
+    };
+
+    event.stopPropagation()
 });
 
 
@@ -81,7 +78,7 @@ function checkAnswer(userOption) {
 
 };
 
-let highScores =[];
+let highScores = [];
 
 function finalScore() {
     var userInitials = userHighscoreInput.value;
@@ -97,11 +94,11 @@ function finalScore() {
     resetQuiz();
 }
 
-function displayHighScores(){
+function displayHighScores() {
     console.log(highScores);
 }
 
-function resetQuiz(){
+function resetQuiz() {
     currentQuestionIndex = 0
 
 }

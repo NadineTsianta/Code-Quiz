@@ -59,8 +59,8 @@ choices.addEventListener("click", function (event) {
     if (currentQuestionIndex < questions.length) {
         resetScreen();
     }
-     else {
-       quizEnd();
+    else {
+        quizEnd();
     };
 
     event.stopPropagation()
@@ -79,25 +79,27 @@ function checkAnswer(userOption) {
 
 };
 
-function quizEnd(){
+function quizEnd() {
     questionDivEl.style.display = "none";
-    finalSc === userScore;
+    finalSc.textContent = `Your final score is ${score}`
     endScreen.style.display = "block";
-    
-    submitBtnEl.addEventListener('click', function (){
-        
+
+    submitBtnEl.addEventListener('click', function () {
+
         window.location.href = '../starter/highscores.html'
-    })
-    
+    });
 
-}
 
+};
 
 
 let highScores = [];
 
 function finalScore() {
-    var userInitials = userHighscoreInput.value;
+    var userInitials = userHighscoreInput.ariaValueMax;
+    localStorage.setItem('userInitials', userInitials);
+    userInitials = localStorage.getItem('userInitials');
+    userHighscoreInput.textContent = userInitials;
     var userScoreObject = {
         initials: userInitials,
         score: score
@@ -108,19 +110,19 @@ function finalScore() {
     displayHighScores();
 
     resetQuiz();
-}
+};
 
 function displayHighScores() {
     let highScoresList = document.getElementById('highscores');
 
-    highScoresList.innerHTML ='';
+    highScoresList.innerHTML = '';
 
     for (let i = 0; i < highScores.length; i++) {
         let scoreEntry = document.createElement('li');
         scoreEntry.textContent = highScores[i].initials + ' :' + highScores[i].score;
         highScoresList.appendChild(scoreEntry);
     };
-    finalScore();
+    
 }
 
 function resetQuiz() {

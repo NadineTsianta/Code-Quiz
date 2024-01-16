@@ -87,7 +87,7 @@ function quizEnd() {
 
     submitBtnEl.addEventListener('click', function () {
 
-        window.location.href = './highscores.html'
+        window.location.href = '../starter/highscores.html'
     });
 
 

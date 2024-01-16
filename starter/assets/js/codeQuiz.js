@@ -115,7 +115,7 @@ function finalScore() {
 function displayHighScores() {
     let storedUserInitials = localStorage.getItem('userInitials');
     userHighscoreInput.textContent = storedUserInitials;
-    
+
     let highScoresList = document.getElementById('highscores');
 
     highScoresList.innerHTML = '';

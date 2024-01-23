@@ -1,6 +1,6 @@
 # CODE-QUIZ
 
-ianta.gi
+
 See site [here](https://nadinetsthub.io/Code-Quiz/)
 
 ## Overview
